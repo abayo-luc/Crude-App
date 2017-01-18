@@ -6,4 +6,7 @@ class ProductsController < ApplicationController
   def all_products
     @all_products = Product.all
   end
+  def index
+    render "index.html.erb"
+  end
 end
