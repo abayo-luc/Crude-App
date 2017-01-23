@@ -1,12 +1,22 @@
 class ProductsController < ApplicationController
-  def sample_product
-    @first_product = Product.first
-    render "sample_product.html.erb"
-  end
-  def all_products
-    @all_products = Product.all
-  end
+
   def index
-    render "index.html.erb"
+    @products = Product.all
+  end
+
+  def show
+    @product = Product.find_by(id: params[:id])
+  end
+
+  def new
+
+  end
+
+  def create
+    product_name = params[:product_name]
+    price = params[:price]
+    description = params[:description]
+    product = Product.new({product_name: product_name, price: price, description: description})
+    product.save
   end
 end
